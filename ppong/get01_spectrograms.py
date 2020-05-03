@@ -11,7 +11,7 @@ def get_audio_duration(filename):
 
 def get_spectrogram(audio_path,plot_mel_power_spectrogram=False):
     """https://github.com/librosa"""
-    
+    import librosa
     y, sr = librosa.load(audio_path)
 
     #Mel spectrogram
