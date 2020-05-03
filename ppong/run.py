@@ -1,3 +1,6 @@
+from rohan.dandage.io_dict import read_dict,to_dict
+from os.path import exists,basename,dirname
+from glob import glob
 
 def run_all(input_audio_path,output_directory,test=False,force=False,cores=4):
     """
@@ -5,8 +8,6 @@ def run_all(input_audio_path,output_directory,test=False,force=False,cores=4):
     
     :param path: path to audio file/s (ext:.m4a) e.g. 'drive/*.m4a'
     """
-    from glob import glob
-    from os.path import basename,dirname
     packagen=basename(dirname(__file__))
     
     cfgp=f"{basename(output_directory).replace('/','')}.json"
