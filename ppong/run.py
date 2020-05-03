@@ -5,6 +5,7 @@ def run_all(input_audio_path,output_directory,test=False,force=False,cores=4):
     
     :param path: path to audio file/s (ext:.m4a) e.g. 'drive/*.m4a'
     """
+    from glob import glob
     from os.path import basename,dirname
     packagen=basename(dirname(__file__))
     
