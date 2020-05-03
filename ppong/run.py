@@ -8,7 +8,7 @@ def run_all(input_audio_path,output_directory,test=False,force=False,cores=4):
     from os.path import basename,dirname
     packagen=basename(dirname(__file__))
     
-    cfgp=f'data_analysed.json'
+    cfgp=f"{basename(output_directory).replace('/','')}.json"
     cfg={}
     cfg['date2pathm4a']={basename(p).replace('.m4a',''):p for p in sorted(glob(input_audio_path))}
     to_dict(cfg,cfgp)
