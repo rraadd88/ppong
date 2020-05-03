@@ -23,7 +23,7 @@ setup(
 name='ppong',
 author='Rohan Dandage',
 author_email='rohanadandage@gmail.com',
-version='0.0.0',
+version='0.0.1',
 url='https://github.com/rraadd88/ppong',
 download_url='https://github.com/rraadd88/ppong/archive/master.zip',
 description='ppong project',
