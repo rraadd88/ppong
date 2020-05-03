@@ -1,5 +1,5 @@
 from rohan.global_imports import *
-
+from rohan.dandage.io_dict import read_dict,to_dict
 
 def get_audio_duration(filename):
     import subprocess
@@ -70,7 +70,7 @@ def get_spectrogram(audio_path,plot_mel_power_spectrogram=False):
     return df2
 
 def get01_date2dspectrogramp(cfg,date2dspectrogramp):
-    dn2dp=read_dict(cfg['date2pathm4ap'])
+    dn2dp=cfg['date2pathm4ap']
     dn2outp={}
     for k in dn2dp:
         dn2outp[key]=f"{dirname(date2dspectrogramp)}/{k}.pqt"

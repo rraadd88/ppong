@@ -33,4 +33,7 @@ license='General Public License v. 3',
 install_requires=required,
 platforms='Tested on Ubuntu 16.04 64bit',
 packages=find_packages(exclude=['test*', 'deps*', 'data*', 'data']),
+entry_points={
+    'console_scripts': ['ppong = ppong.run:parser.dispatch',],
+    },
 )

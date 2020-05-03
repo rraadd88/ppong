@@ -1,4 +1,5 @@
 from rohan.global_imports import *
+from rohan.dandage.io_dict import read_dict,to_dict
 def get_annot_rallies(df):
     df1=df.groupby('time (ms)').agg({'db (log-scale)':[np.mean,np.std]})
     df1.columns=coltuples2str(df1.columns)
@@ -17,7 +18,7 @@ def get_annot_rallies(df):
     return df1
 
 def get01_date2dpeakp(cfg,date2dpeakp):
-    dn2dp=read_dict(cfg['date2pathm4ap'])
+    dn2dp=cfg['date2pathm4ap']
     dn2outp={}
     for k in dn2dp:
         outpre=f"{dirname(date2dpeakp)}/{k}"

@@ -2,7 +2,7 @@ from rohan.dandage.io_dict import read_dict,to_dict
 from os.path import exists,basename,dirname
 from glob import glob
 
-def run_all(input_audio_path,output_directory,test=False,force=False,cores=4):
+def analyser(input_audio_path,output_directory,test=False,force=False,cores=4):
     """
     runs the analysis.
     
@@ -12,7 +12,7 @@ def run_all(input_audio_path,output_directory,test=False,force=False,cores=4):
     
     cfgp=f"{basename(output_directory).replace('/','')}.json"
     cfg={}
-    cfg['date2pathm4a']={basename(p).replace('.m4a',''):p for p in sorted(glob(input_audio_path))}
+    cfg['date2pathm4ap']={basename(p).replace('.m4a',''):p for p in sorted(glob(input_audio_path))}
     to_dict(cfg,cfgp)
     
     from rohan.dandage.io_fun import run_package
@@ -23,7 +23,7 @@ def run_all(input_audio_path,output_directory,test=False,force=False,cores=4):
 import argh
 import sys
 parser = argh.ArghParser()
-parser.add_commands([run_all,])
+parser.add_commands([analyser,])
 
 if __name__ == '__main__':
     parser.dispatch()
