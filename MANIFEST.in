@@ -3,8 +3,4 @@ include setup.py
 include README.md
 include LICENSE
 recursive-exclude ppong data deps
-recursive-include ppong *.py
-recursive-include ppong *.yml
-recursive-include ppong *.txt
-include ppong/plot.zip
-include ppong/figures.ipynb
+recursive-include ppong *
