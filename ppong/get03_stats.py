@@ -2,7 +2,8 @@ from rohan.global_imports import *
 from rohan.dandage.io_dict import read_dict,to_dict
 
 def get01_dpeaks_raw(date2dpeakp,dpeaks_rawp):
-    df1=pd.concat(date2dpeakp,names=['date'],axis=0).reset_index()
+    date2dpeakp=read_dict(date2dpeakp)
+    df1=pd.concat({k: read_table(date2dpeakp[k]) for k in date2dpeakp},names=['date'],axis=0).reset_index()
     to_table(df1,dpeaks_rawp)
         
 def get02_dstats(dpeaks_rawp,dstatsp):
@@ -31,4 +32,11 @@ def get02_dstats(dpeaks_rawp,dstatsp):
     df2['rally speed']=df2['rally count']/df2['rally duration']
     df2['rally speed']=df2['rally speed'].replace([np.inf,-np.inf],np.nan)
     df2['date']=df2['date'].apply(int)
-    to_table(dstatsp)
+    to_table(df2,dstatsp)
+    
+def get03_plot_stats(cfg,dstatsp):
+    from ppong.plots import plot_stats
+    from rohan.dandage.io_strs import get_datetime
+    outp=f'plot/scatters_stats {get_datetime()}.png'
+    plot_stats(read_table(dstatsp))
+    savefig(outp)
