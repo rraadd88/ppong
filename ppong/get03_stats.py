@@ -34,9 +34,3 @@ def get02_dstats(dpeaks_rawp,dstatsp):
     df2['date']=df2['date'].apply(int)
     to_table(df2,dstatsp)
     
-def get03_plot_stats(cfg,dstatsp):
-    from ppong.plots import plot_stats
-    from rohan.dandage.io_strs import get_datetime
-    outp=f'plot/scatters_stats {get_datetime()}.png'
-    plot_stats(read_table(dstatsp))
-    savefig(outp)

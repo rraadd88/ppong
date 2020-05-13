@@ -30,13 +30,5 @@ def get01_date2dpeakp(cfg,date2dpeakp):
             to_table(df2.dropna(subset=['db (log-scale) mean peak']),dn2outp[k])
     to_dict(dn2outp,date2dpeakp)
     
-def get02_plot_peaks(cfg,plot_peaksp):
-    from ppong.plots import plot_peaks
-    dn2dp=read_dict(cfg['date2dpeakp'])
-    for k in dn2dp:
-        outp=f'plot/line_time_db (log-scale) mean peak {k}.png'
-        if not exists(outp):
-            df1=read_table(f'data_analysed/data02_peaks/{k}.pqt')
-            ax=plot_peaks(df1)
-            savefig(outp,dpi=90)
+
     

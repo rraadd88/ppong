@@ -75,6 +75,6 @@ def get01_date2dspectrogramp(cfg,date2dspectrogramp):
     for k in dn2dp:
         dn2outp[k]=f"{dirname(date2dspectrogramp)}/{k}.pqt"
         if not exists(dn2outp[k]):
-            df=get_audio_peaks(dn2dp[k])
+            df=get_spectrogram(dn2dp[k])
             to_table(df,dn2outp[k])
     to_dict(dn2outp,date2dspectrogramp)

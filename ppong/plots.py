@@ -47,3 +47,21 @@ def plot_stats(dplot):
         ax.set_ylim(dplot[coly].quantile(lim_quantile),dplot[coly].quantile(1-lim_quantile))
         ax.ticklabel_format(style='plain',axis='x')
     plt.tight_layout()
+    
+    
+def plot_stats(cfg,dstatsp):
+    from ppong.plots import plot_stats
+    from rohan.dandage.io_strs import get_datetime
+    outp=f'plot/scatters_stats {get_datetime()}.png'
+    plot_stats(read_table(dstatsp))
+    savefig(outp)
+    
+def get02_plot_peaks(cfg,plot_peaksp):
+    from ppong.plots import plot_peaks
+    dn2dp=read_dict(cfg['date2dpeakp'])
+    for k in dn2dp:
+        outp=f'plot/line_time_db (log-scale) mean peak {k}.png'
+        if not exists(outp):
+            df1=read_table(f'data_analysed/data02_peaks/{k}.pqt')
+            ax=plot_peaks(df1)
+            savefig(outp,dpi=90)
