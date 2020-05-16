@@ -19,7 +19,8 @@ def plot_peaks(df1):
     return ax
         
 def plot_stats(dplot):
-    dplot['day #']=(dplot['date']-dplot['date'].min())+1
+    # dplot=dplot.sort_values(by=['date'])
+    # dplot['day #']=dplot['date'].rank()
     colxs=['rally #','day #']
     colys=['rally speed','rally duration','loudness (db)']
     from rohan.dandage.plot.colors import get_ncolors
@@ -49,8 +50,8 @@ def plot_stats(dplot):
     plt.tight_layout()
     
     
-def plot_stats(cfg,dstatsp):
-    from ppong.plots import plot_stats
+def plot_stats_(cfg,dstatsp):
+    # from ppong.plots import plot_stats
     from rohan.dandage.io_strs import get_datetime
     outp=f'plot/scatters_stats {get_datetime()}.png'
     plot_stats(read_table(dstatsp))

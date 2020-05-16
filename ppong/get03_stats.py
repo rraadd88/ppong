@@ -32,5 +32,16 @@ def get02_dstats(dpeaks_rawp,dstatsp):
     df2['rally speed']=df2['rally count']/df2['rally duration']
     df2['rally speed']=df2['rally speed'].replace([np.inf,-np.inf],np.nan)
     df2['date']=df2['date'].apply(int)
+    
+    ds=df2['date'].drop_duplicates().sort_values()
+    df=pd.DataFrame(ds)
+    df.index=range(len(df))
+    from datetime import datetime
+    df['day gap']=df.apply(lambda x: (datetime.strptime(str(x['date']), '%y%m%d')-datetime.strptime(str(df.loc[x.name-1 if x.name!=0 else 0,'date']), '%y%m%d')).days ,axis=1)
+    # df
+    df['day #']=df['day gap'].cumsum()
+    df['date']=df['date'].apply(int)
+    df2=df2.merge(df,on='date',how='left')
+    
     to_table(df2,dstatsp)
     
