@@ -1,2 +1,5 @@
 # ppong
-ping pong data analyzer
+
+Generates rally stats from audio.
+
+![alt text](./data/schem.png)
